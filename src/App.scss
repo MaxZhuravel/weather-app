@@ -181,9 +181,16 @@
 
   &__item {
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     height: 215px;
     border-radius: 20px;
     background-color: #FFFFFD;
+    padding: 25px;
+  }
+  &__item-title {
+    font-size: 18px;
+    color: $second-color;
   }
 }
 
@@ -231,4 +238,12 @@
   &:focus {
     outline: none;
   }
+}
+
+.large-number {
+  font-size: 52px;
+}
+
+.subtitle {
+  font-size: 18px;
 }
