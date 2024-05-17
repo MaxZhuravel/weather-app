@@ -203,6 +203,7 @@
   justify-content: center;
   align-items: center;
   font-weight: 700;
+  cursor: pointer;
 }
 
 .active {
@@ -246,4 +247,45 @@
 
 .subtitle {
   font-size: 18px;
+  display: flex;
+  align-items: center;
+}
+
+.suntime {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  &__icon {
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+}
+
+.wind-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  margin-right: 10px;
+}
+
+.unit-measure {
+  font-size: 24px;
+}
+
+.humidity {
+  &__number {
+    position: relative;
+    span {
+      display: inline-block;
+      position: absolute;
+      top: 12%;
+      font-size: 24px;
+    }
+  }
 }
