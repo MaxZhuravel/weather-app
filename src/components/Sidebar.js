@@ -10,9 +10,7 @@ class Sidebar extends Component {
             <div className="sidebar">
                 <Search/>
                 <Today/>
-
                 <Description/>
-
                 <City/>
             </div>
         );
