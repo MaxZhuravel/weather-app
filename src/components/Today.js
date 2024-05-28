@@ -26,7 +26,6 @@ class Today extends Component {
         let time = "";
         if (this.context.date) {
             let date = new Date(this.context.date * 1000);
-            console.log(date);
             day = this.getDayString(date.getDay());
             temp = this.context.temp
             time = date.getHours() + ":" + date.getMinutes();
