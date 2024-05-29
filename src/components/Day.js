@@ -4,9 +4,9 @@ class Day extends Component {
     render() {
         return (
             <div className="day">
-                <div className="day__name">Sun</div>
+                <div className="day__name">{this.props.dayName}</div>
                 <div className="day__img">
-                    <img src="/icons/001-sun.png" alt=""/>
+                    <img src="/icons/02d.png" alt=""/>
                 </div>
                 <div className="day__temp">15</div>
             </div>

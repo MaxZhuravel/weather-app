@@ -3,7 +3,18 @@ import Day from "./Day";
 import TempType from "./TempType";
 
 class Week extends Component {
+
+    dayNameArr = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+    renderDays = () => {
+        return (this.dayNameArr.map(day => {
+            return <Day key={day} dayName={day} />;
+        }));
+    }
+
     render() {
+
+        let days = this.renderDays();
 
         let classNames = this.props.tempType === 'C'
             ? ['celsius active', 'fahrenheit']
@@ -19,13 +30,7 @@ class Week extends Component {
                     </div>
                 </div>
                 <div className="week__body">
-                    <Day/>
-                    <Day/>
-                    <Day/>
-                    <Day/>
-                    <Day/>
-                    <Day/>
-                    <Day/>
+                    {days}
                 </div>
             </div>
         );

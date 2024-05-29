@@ -5,6 +5,7 @@ class City extends Component {
         return (
             <div className="sidebar__city">
                 <img src="/img/new-york.jpg" alt="city"/>
+                <div className="city__name">{this.props.city}</div>
             </div>
         );
     }

@@ -34,9 +34,9 @@ class Today extends Component {
         return (
             <div className="today">
                 <div className="today__image">
-                    <img src="/icons/001-sun.png" alt=" "/>
+                    <img src={`/icons/${this.context.icon}.png`} alt=" "/>
                 </div>
-                <div className="today__temp">{temp}<span>°{this.props.tempType}</span></div>
+                <div className="today__temp">{Math.round(temp)}<span>°{this.props.tempType}</span></div>
                 <div className="today__name">{day}, <span>{time}</span></div>
             </div>
         );
