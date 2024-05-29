@@ -1,7 +1,7 @@
 class WeatherService {
 
-    getWeatherData = async () => {
-        let res = await fetch("https://api.openweathermap.org/data/2.5/weather?&units=metric&appid=b2714a5cbe36acd4448f2292ecddf4ed&q=Ivano-Frankivsk");
+    getWeatherData = async (city) => {
+        let res = await fetch(`https://api.openweathermap.org/data/2.5/weather?&units=metric&appid=b2714a5cbe36acd4448f2292ecddf4ed&q=${city}`);
 
         if (res.status === 200) {
             let weatherData = await res.json();

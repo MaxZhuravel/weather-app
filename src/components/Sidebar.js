@@ -8,7 +8,7 @@ class Sidebar extends Component {
     render() {
         return (
             <div className="sidebar">
-                <Search/>
+                <Search changeCity={this.props.changeCity}/>
                 <Today/>
                 <Description/>
                 <City/>

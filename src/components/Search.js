@@ -1,11 +1,27 @@
 import React, {Component} from 'react';
 
 class Search extends Component {
+
+    state = {
+        value: '',
+    }
+
+    onValueChange = (e) => {
+        this.setState({
+            value: e.target.value
+        })
+    }
+
+    onSubmit = (e) => {
+        e.preventDefault();
+        this.props.changeCity(this.state.value);
+    }
+
     render() {
         return (
-            <div className="sidebar__search">
-                <input type="text" className="search" placeholder="Search for places..."/>
-            </div>
+            <form onSubmit={this.onSubmit} className="sidebar__search">
+                <input onChange={this.onValueChange} value={this.state.value} type="text" className="search" placeholder="Search for places..."/>
+            </form>
         );
     }
 }

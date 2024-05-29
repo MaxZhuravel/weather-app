@@ -108,7 +108,6 @@ class Highlights extends Component {
 
         let items = this.renderHighlightsItems();
 
-
         return (
             <div className="highlights">
                 <div className="highlights__title">Today`s Highlights</div>
