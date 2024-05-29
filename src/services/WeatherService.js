@@ -1,12 +1,19 @@
 class WeatherService {
 
-    getWeatherData = async (city) => {
-        let res = await fetch(`https://api.openweathermap.org/data/2.5/weather?&units=metric&appid=b2714a5cbe36acd4448f2292ecddf4ed&q=${city}`);
+    getResource = async (url) => {
+        let res = await fetch(url);
 
-        if (res.status === 200) {
-            let weatherData = await res.json();
-            return this.transformData(weatherData);
-        } else throw new Error(`Something went wrong! status: ${res.status}`);
+        if (!res.ok) {
+            throw new Error(`Could not fetch ${url}, status: ${res.status}`);
+        }
+
+        return await res.json();
+    }
+
+    getWeatherData = async (city) => {
+        const weatherData = await this.getResource(`https://api.openweathermap.org/data/2.5/weather?&units=metric&appid=b2714a5cbe36acd4448f2292ecddf4ed&q=${city}`);
+
+        return this.transformData(weatherData);
     }
 
     transformData = (weatherData) => {

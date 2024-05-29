@@ -8,6 +8,8 @@ class Board extends Component {
 
     state = {
         city: 'Ivano-Frankivsk',
+        tryCity: 'Ivano-Frankivsk',
+        error: null,
         tempType: 'C',
         weatherData: {}
     };
@@ -19,14 +21,25 @@ class Board extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (prevState.city !== this.state.city) {
-            this.onRequest(this.state.city);
+        if (prevState.tryCity !== this.state.tryCity) {
+            this.onRequest(this.state.tryCity).catch(this.setError);
         }
+    }
+
+    setError = (e) => {
+        console.log(e);
+        this.setState({ error: e });
     }
 
     onRequest = async (city) => {
         let data = await this.service.getWeatherData(city);
-        this.setState({weatherData: data});
+        this.setState({weatherData: data, city, error: null});
+    }
+
+    changeTryCity = (city) => {
+        this.setState({
+            tryCity: city
+        });
     }
 
     changeCity = (city) => {
@@ -70,9 +83,10 @@ class Board extends Component {
             <WeatherDataContext.Provider value={this.state.weatherData}>
                 <div className="board">
                     <Sidebar
-                        changeCity={this.changeCity}
+                        changeCity={this.changeTryCity}
                         tempType={this.state.tempType}
-                        city={this.state.city}/>
+                        city={this.state.city}
+                        error={this.state.error}/>
                     <Main
                         convert={this.convertTemp}
                         tempType={this.state.tempType}/>
