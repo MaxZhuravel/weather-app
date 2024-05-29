@@ -6,7 +6,9 @@ class Main extends Component {
     render() {
         return (
             <div className="main">
-                <Week/>
+                <Week
+                    convert={this.props.convert}
+                    tempType={this.props.tempType}/>
                 <Highlights/>
             </div>
         );

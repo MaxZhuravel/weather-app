@@ -9,9 +9,9 @@ class Sidebar extends Component {
         return (
             <div className="sidebar">
                 <Search changeCity={this.props.changeCity}/>
-                <Today/>
+                <Today tempType={this.props.tempType}/>
                 <Description/>
-                <City/>
+                <City city={this.props.city}/>
             </div>
         );
     }

@@ -36,7 +36,7 @@ class Today extends Component {
                 <div className="today__image">
                     <img src="/icons/001-sun.png" alt=" "/>
                 </div>
-                <div className="today__temp">{temp}<span>°C</span></div>
+                <div className="today__temp">{temp}<span>°{this.props.tempType}</span></div>
                 <div className="today__name">{day}, <span>{time}</span></div>
             </div>
         );
