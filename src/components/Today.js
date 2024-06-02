@@ -1,12 +1,12 @@
-import React, {Component} from 'react';
+import React, {useContext} from 'react';
 import WeatherDataContext from "../context/WeatherDataContext";
 
-class Today extends Component {
+const Today = (props) => {
 
-    static contextType = WeatherDataContext;
+    const context = useContext(WeatherDataContext);
 
-    getDayString = (dayNumber) => {
-        if (this.context.date) {
+    const getDayString = (dayNumber) => {
+        if (context.date) {
             switch (dayNumber) {
                 case 0: return 'Sunday';
                 case 1: return 'Monday';
@@ -20,27 +20,25 @@ class Today extends Component {
         }
     }
 
-    render() {
-        let day = '';
-        let temp = 0;
-        let time = "";
-        if (this.context.date) {
-            let date = new Date(this.context.date * 1000);
-            day = this.getDayString(date.getDay());
-            temp = this.context.temp
-            time = date.getHours() + ":" + date.getMinutes();
-        }
-
-        return (
-            <div className="today">
-                <div className="today__image">
-                    <img src={`/icons/${this.context.icon}.png`} alt=" "/>
-                </div>
-                <div className="today__temp">{Math.round(temp)}<span>°{this.props.tempType}</span></div>
-                <div className="today__name">{day}, <span>{time}</span></div>
-            </div>
-        );
+    let day = '';
+    let temp = 0;
+    let time = "";
+    if (context.date) {
+        let date = new Date(context.date * 1000);
+        day = getDayString(date.getDay());
+        temp = context.temp
+        time = date.getHours() + ":" + date.getMinutes();
     }
+
+    return (
+        <div className="today">
+            <div className="today__image">
+                <img src={`/icons/${context.icon}.png`} alt=" "/>
+            </div>
+            <div className="today__temp">{Math.round(temp)}<span>°{props.tempType}</span></div>
+            <div className="today__name">{day}, <span>{time}</span></div>
+        </div>
+    );
 }
 
 export default Today;

@@ -1,13 +1,11 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-class ErrorMessage extends Component {
-    render() {
-        return (
-            <div className="error">
-                <img src="/img/error.jpg" alt=""/>
-            </div>
-        );
-    }
+const ErrorMessage = () => {
+    return (
+        <div className="error">
+            <img src="/img/error.jpg" alt=""/>
+        </div>
+    );
 }
 
 export default ErrorMessage;

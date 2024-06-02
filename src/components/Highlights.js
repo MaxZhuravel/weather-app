@@ -1,40 +1,46 @@
-import React, {Component} from 'react';
+import React, {useContext} from 'react';
 import HighlightsItem from "./HighlightsItem";
 import WeatherDataContext from "../context/WeatherDataContext";
 
-class Highlights extends Component {
+const Highlights = () => {
 
-    static contextType = WeatherDataContext;
+    const context = useContext(WeatherDataContext);
 
-    renderHighlightsItems = () => {
+    const renderHighlightsItems = () => {
         let items = null;
-        if (this.context.id) {
-            items = this.context.highlights.map((item, i) => {
-                let subtitle = this.getSubtitle(item.value, i);
+        if (context.id) {
+            items = context.highlights.map((item, i) => {
+                let subtitle = getSubtitle(item.value, i);
                 return <HighlightsItem
                     key={item.title}
                     title={item.title}
                     isValue={true}
-                    value={this.getValue(item.title, item.value)}
+                    value={getValue(item.title, item.value)}
                     subtitle={subtitle}
-                    unitMeasure={this.getUnitMeasure(item.title)}/>
+                    unitMeasure={getUnitMeasure(item.title)}/>
             });
         }
         return items;
     }
 
-    getUnitMeasure(item) {
+    const getUnitMeasure = (item) => {
         switch (item) {
-            case 'Pressure': return " gPa";
-            case 'Wind Status': return " km/h";
-            case 'Humidity': return " %";
-            case 'Visibility': return " km";
-            case 'Clouds': return " %";
-            default: return null;
+            case 'Pressure':
+                return " gPa";
+            case 'Wind Status':
+                return " km/h";
+            case 'Humidity':
+                return " %";
+            case 'Visibility':
+                return " km";
+            case 'Clouds':
+                return " %";
+            default:
+                return null;
         }
     }
 
-    getValue(title, source) {
+    const getValue = (title, source) => {
         if (title === 'Sunrise & Sunset') {
             let sunriseDate = new Date(source[0] * 1000);
             let sunsetDate = new Date(source[1] * 1000);
@@ -49,7 +55,7 @@ class Highlights extends Component {
         } else return source;
     }
 
-    getWindDirection = (value) => {
+    const getWindDirection = (value) => {
         if (((value => 0) && (value <= 11.25)) || ((value > 348.75) && (value <= 360))) return "N";
         if (value > 11.25 && value <= 33.75) return "NNE";
         if (value > 33.75 && value <= 56.25) return "NE";
@@ -69,7 +75,7 @@ class Highlights extends Component {
         else return null;
     }
 
-    getSubtitle = (value, i) => {
+    const getSubtitle = (value, i) => {
         switch (i) {
             case 0: {
                 if (value < 1000) return 'Low';
@@ -77,7 +83,7 @@ class Highlights extends Component {
                 else return 'Normal';
             }
             case 1: {
-                return this.getWindDirection(value[1]);
+                return getWindDirection(value[1]);
             }
             case 2:
                 return null;
@@ -104,19 +110,16 @@ class Highlights extends Component {
         }
     }
 
-    render() {
+    let items = renderHighlightsItems();
 
-        let items = this.renderHighlightsItems();
-
-        return (
-            <div className="highlights">
-                <div className="highlights__title">Today`s Highlights</div>
-                <div className="highlights__body">
-                    {items}
-                </div>
+    return (
+        <div className="highlights">
+            <div className="highlights__title">Today`s Highlights</div>
+            <div className="highlights__body">
+                {items}
             </div>
-        );
-    }
+        </div>
+    );
 
 }
 

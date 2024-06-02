@@ -1,11 +1,10 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-class TempType extends Component {
-    render() {
-        return (
-            <div className={this.props.className} onClick={this.props.convert}>°{this.props.type}</div>
-        );
-    }
+const TempType = (props) => {
+    return (
+        <div className={props.className} onClick={props.convert}>°{props.type}</div>
+    );
+
 }
 
 export default TempType;
