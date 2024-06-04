@@ -45,8 +45,6 @@ class WeatherService {
             return acc;
         }, {});
 
-        console.log(days)
-
         return Object.entries(days).map(([key, value]) => {
             const day = new Date(key).toLocaleDateString('en-US', {
                 weekday: 'short',

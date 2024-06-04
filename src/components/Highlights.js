@@ -24,20 +24,14 @@ const Highlights = () => {
     }
 
     const getUnitMeasure = (item) => {
-        switch (item) {
-            case 'Pressure':
-                return " gPa";
-            case 'Wind Status':
-                return " km/h";
-            case 'Humidity':
-                return " %";
-            case 'Visibility':
-                return " km";
-            case 'Clouds':
-                return " %";
-            default:
-                return null;
+        const units = {
+            'Pressure': ' gPa',
+            'Wind Status': ' km/h',
+            'Humidity': ' %',
+            'Visibility': ' km',
+            'Clouds': '%',
         }
+        return units[item] ? units[item] : null;
     }
 
     const getValue = (title, source) => {
@@ -56,24 +50,36 @@ const Highlights = () => {
     }
 
     const getWindDirection = (value) => {
-        if (((value => 0) && (value <= 11.25)) || ((value > 348.75) && (value <= 360))) return "N";
-        if (value > 11.25 && value <= 33.75) return "NNE";
-        if (value > 33.75 && value <= 56.25) return "NE";
-        if (value > 66.25 && value <= 78.75) return "ENE";
-        if (value > 78.75 && value <= 101.25) return "E";
-        if (value > 101.25 && value <= 123.75) return "ESE";
-        if (value > 123.75 && value <= 146.25) return "SE";
-        if (value > 146.25 && value <= 168.75) return "SSE";
-        if (value > 168.75 && value <= 191.25) return "S";
-        if (value > 191.25 && value <= 213.75) return "SSW";
-        if (value > 213.75 && value <= 236.25) return "SW";
-        if (value > 236.25 && value <= 258.75) return "WSW";
-        if (value > 258.75 && value <= 281.25) return "W";
-        if (value > 281.25 && value <= 303.75) return "WNW";
-        if (value > 303.75 && value <= 326.25) return "NW";
-        if (value > 326.25 && value <= 348.75) return "NNW";
-        else return null;
-    }
+        const directions = [
+            'N',
+            'NNE',
+            'NE',
+            'ENE',
+            'E',
+            'ESE',
+            'SE',
+            'SSE',
+            'S',
+            'SSW',
+            'SW',
+            'WSW',
+            'W',
+            'WNW',
+            'NW',
+            'NNW',
+        ];
+
+        // Split into the 8 directions
+        let degrees = (value * 8) / 360;
+
+        // round to nearest integer.
+        degrees = Math.round(degrees, 0);
+
+        // Ensure it's within 0-7
+        degrees = (degrees + 8) % 8;
+
+        return directions[degrees];
+    };
 
     const getSubtitle = (value, i) => {
         switch (i) {
