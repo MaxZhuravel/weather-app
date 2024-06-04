@@ -168,14 +168,35 @@
   align-items: center;
   border-radius: 10px;
   background-color: #FFFFFD;
-  width: 13%;
-
+  width: 23%;
+  &__name {
+    font-size: 20px;
+  }
   &__img {
     padding: 10px;
 
     img {
       width: 60px;
       object-fit: contain
+    }
+  }
+  &__body {
+    display: flex;
+  }
+  &__temp {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    & > div {
+      position: relative;
+    }
+    span {
+      display: inline-block;
+      position: relative;
+      top: -20%;
+      font-size: 12px;
     }
   }
 }

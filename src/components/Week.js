@@ -1,16 +1,25 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import Day from "./Day";
 import TempType from "./TempType";
+import WeatherDataContext from "../context/WeatherDataContext";
 
 const Week = (props) => {
 
-    const dayNameArr = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    const {weatherWeekData} = useContext(WeatherDataContext);
 
     const renderDays = () => {
-        return (dayNameArr.map(day => {
-            return <Day key={day} dayName={day}/>;
-        }));
-    }
+       if (weatherWeekData.length) {
+           return weatherWeekData.map(({ day, min, max, icon }) => {
+               return <Day
+                        key={day}
+                        dayName={day}
+                        min={min}
+                        max={max}
+                        icon={icon}
+                        tempType={props.tempType} />;
+           });
+       }
+    };
 
     let days = renderDays();
 

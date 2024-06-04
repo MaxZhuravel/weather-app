@@ -4,12 +4,12 @@ import WeatherDataContext from "../context/WeatherDataContext";
 
 const Highlights = () => {
 
-    const context = useContext(WeatherDataContext);
+    const {weatherDailyData} = useContext(WeatherDataContext);
 
     const renderHighlightsItems = () => {
         let items = null;
-        if (context.id) {
-            items = context.highlights.map((item, i) => {
+        if (weatherDailyData.id) {
+            items = weatherDailyData.highlights.map((item, i) => {
                 let subtitle = getSubtitle(item.value, i);
                 return <HighlightsItem
                     key={item.title}

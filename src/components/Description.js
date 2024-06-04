@@ -3,15 +3,15 @@ import WeatherDataContext from "../context/WeatherDataContext";
 
 const Description = () => {
 
-    const context = useContext(WeatherDataContext);
+    const {weatherDailyData} = useContext(WeatherDataContext);
 
     return (
         <div className="sidebar__info">
             <div className="sidebar__desc">
                 <div className="sidebar__desc-icon">
-                    <img src={`/icons/${context.icon}.png`} alt=""/>
+                    <img src={`/icons/${weatherDailyData.icon}.png`} alt=""/>
                 </div>
-                {context.description}
+                {weatherDailyData.description}
             </div>
             <div className="sidebar__perc">
                 <div className="sidebar__perc-icon">
