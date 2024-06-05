@@ -11,17 +11,12 @@ const Board = () => {
     const [error, setError] = useState(null);
     const [tempType, setTempType] = useState('C');
     const [weatherDailyData, setWeatherDailyData] = useState({});
-    const [weatherWeekData, setWeatherWeekData] = useState({});
+    const [weatherWeekData, setWeatherWeekData] = useState([]);
 
     const service = new WeatherService();
 
-    // useEffect(() => {
-    //     onRequest(city);
-    // }, []);
-
     useEffect(() => {
         onRequest(requestCity);
-
     }, [requestCity]);
 
     const onRequest = async (city) => {
@@ -30,6 +25,7 @@ const Board = () => {
             const week = await service.getWeekWeatherData(city);
             setWeatherDailyData(day);
             setWeatherWeekData(week);
+            tempType === 'F' && convertCelsiusToFahrenheit();
             setDisplayCity(city);
             setError(null);
         } catch (e) {
@@ -38,17 +34,35 @@ const Board = () => {
         }
     };
 
+    const getFahrenheit = (number) => {
+        return ((number * 1.8) + 32);
+    }
+
+    const getCelsius = (number) => {
+        return ((number - 32) * (5 / 9));
+    }
+
     const convertCelsiusToFahrenheit = () => {
         setWeatherDailyData((prevState) => {
-            const newTemp = (prevState.temp * 1.8) + 32;
+            const newTemp = getFahrenheit(prevState.temp);
             return { ...prevState, temp: newTemp };
+        });
+        setWeatherWeekData((prevState) => {
+            return prevState.map(item => {
+                return ({...item, min: getFahrenheit(item.min), max: getFahrenheit(item.max)});
+            });
         });
     };
 
     const convertFahrenheitToCelsius = () => {
         setWeatherDailyData((prevState) => {
-            const newTemp = (prevState.temp - 32) * (5 / 9);
+            const newTemp = getCelsius(prevState.temp);
             return { ...prevState, temp: newTemp };
+        });
+        setWeatherWeekData((prevState) => {
+            return prevState.map(item => {
+                return ({...item, min: getCelsius(item.min), max: getCelsius(item.max)});
+            });
         });
     };
 
