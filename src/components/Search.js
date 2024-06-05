@@ -17,6 +17,7 @@ const Search = (props) => {
                 type="text"
                 className="search"
                 placeholder="Search for places..."/>
+            <button type="submit" onClick={onSubmit} className="search__button"></button>
         </form>
     );
 

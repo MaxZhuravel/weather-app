@@ -6,8 +6,8 @@ import WeatherDataContext from "../context/WeatherDataContext";
 
 
 const Board = () => {
-    const [city, setCity] = useState('Ivano-Frankivsk');
-    const [tryCity, setTryCity] = useState('Ivano-Frankivsk');
+    const [displayCity, setDisplayCity] = useState('Ivano-Frankivsk');
+    const [requestCity, setRequestCity] = useState('Ivano-Frankivsk');
     const [error, setError] = useState(null);
     const [tempType, setTempType] = useState('C');
     const [weatherDailyData, setWeatherDailyData] = useState({});
@@ -15,14 +15,14 @@ const Board = () => {
 
     const service = new WeatherService();
 
-    useEffect(() => {
-        onRequest(city);
-    }, []);
+    // useEffect(() => {
+    //     onRequest(city);
+    // }, []);
 
     useEffect(() => {
-        onRequest(tryCity);
+        onRequest(requestCity);
 
-    }, [tryCity]);
+    }, [requestCity]);
 
     const onRequest = async (city) => {
         try {
@@ -30,7 +30,7 @@ const Board = () => {
             const week = await service.getWeekWeatherData(city);
             setWeatherDailyData(day);
             setWeatherWeekData(week);
-            setCity(city);
+            setDisplayCity(city);
             setError(null);
         } catch (e) {
             console.log(e);
@@ -67,9 +67,9 @@ const Board = () => {
         <WeatherDataContext.Provider value={{weatherDailyData, weatherWeekData}}>
             <div className="board">
                 <Sidebar
-                    changeCity={setTryCity}
+                    changeCity={setRequestCity}
                     tempType={tempType}
-                    city={city}
+                    city={displayCity}
                     error={error} />
                 <Main
                     convert={convertTemp}
