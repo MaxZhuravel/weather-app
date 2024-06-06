@@ -2,11 +2,13 @@ import React, {useState} from 'react';
 
 const Search = (props) => {
 
+    const {changeCity} = props;
+
     const [search, setSearch] = useState('');
 
     const onSubmit = (e) => {
         e.preventDefault();
-        props.changeCity(search);
+        changeCity(search);
     }
 
     return (

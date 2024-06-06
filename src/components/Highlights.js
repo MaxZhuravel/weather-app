@@ -10,7 +10,7 @@ const Highlights = () => {
         let items = null;
         if (weatherDailyData.id) {
             items = weatherDailyData.highlights.map((item, i) => {
-                let subtitle = getSubtitle(item.value, i);
+                const subtitle = getSubtitle(item.value, i);
                 return <HighlightsItem
                     key={item.title}
                     title={item.title}
@@ -36,10 +36,10 @@ const Highlights = () => {
 
     const getValue = (title, source) => {
         if (title === 'Sunrise & Sunset') {
-            let sunriseDate = new Date(source[0] * 1000);
-            let sunsetDate = new Date(source[1] * 1000);
-            let sunriseTime = sunriseDate.getHours() + ':' + sunriseDate.getMinutes()
-            let sunsetTime = sunsetDate.getHours() + ':' + sunsetDate.getMinutes()
+            const sunriseDate = new Date(source[0] * 1000);
+            const sunsetDate = new Date(source[1] * 1000);
+            const sunriseTime = sunriseDate.getHours() + ':' + sunriseDate.getMinutes()
+            const sunsetTime = sunsetDate.getHours() + ':' + sunsetDate.getMinutes()
             return [
                 {imgSrc: '/icons/027-sunrise.png', time: sunriseTime},
                 {imgSrc: '/icons/026-sunset.png', time: sunsetTime}
@@ -116,7 +116,7 @@ const Highlights = () => {
         }
     }
 
-    let items = renderHighlightsItems();
+    const items = renderHighlightsItems();
 
     return (
         <div className="highlights">

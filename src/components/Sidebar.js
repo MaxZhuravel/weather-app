@@ -7,14 +7,16 @@ import ErrorMessage from "./ErrorMessage";
 
 const Sidebar = (props) => {
 
-    let content = props.error ? <ErrorMessage/> : <Today tempType={props.tempType}/>
+    const {error, tempType, changeCity, city} = props;
+
+    const content = error ? <ErrorMessage/> : <Today tempType={tempType}/>
 
     return (
         <div className="sidebar">
-            <Search changeCity={props.changeCity}/>
+            <Search changeCity={changeCity}/>
             {content}
             <Description/>
-            <City city={props.city}/>
+            <City city={city}/>
         </div>
     );
 

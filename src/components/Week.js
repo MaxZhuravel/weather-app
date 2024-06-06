@@ -5,6 +5,8 @@ import WeatherDataContext from "../context/WeatherDataContext";
 
 const Week = (props) => {
 
+    const {tempType, convert} = props;
+
     const {weatherWeekData} = useContext(WeatherDataContext);
 
     const renderDays = () => {
@@ -16,14 +18,14 @@ const Week = (props) => {
                         min={min}
                         max={max}
                         icon={icon}
-                        tempType={props.tempType} />;
+                        tempType={tempType} />;
            });
        }
     };
 
-    let days = renderDays();
+    const days = renderDays();
 
-    let classNames = props.tempType === 'C'
+    const classNames = tempType === 'C'
         ? ['celsius active', 'fahrenheit']
         : ['celsius', 'fahrenheit active'];
 
@@ -32,8 +34,8 @@ const Week = (props) => {
             <div className="week__header">
                 <div className="week__title">Week</div>
                 <div className="week__temp-type">
-                    <TempType className={classNames[0]} type="C" convert={() => props.convert('C')}/>
-                    <TempType className={classNames[1]} type="F" convert={() => props.convert('F')}/>
+                    <TempType className={classNames[0]} type="C" convert={() => convert('C')}/>
+                    <TempType className={classNames[1]} type="F" convert={() => convert('F')}/>
                 </div>
             </div>
             <div className="week__body">

@@ -1,7 +1,7 @@
 class WeatherService {
 
     getResource = async (url) => {
-        let res = await fetch(url);
+        const res = await fetch(url);
 
         if (!res.ok) {
             throw new Error(`Could not fetch ${url}, status: ${res.status}`);
@@ -73,8 +73,8 @@ class WeatherService {
     }
 
     bigFirstSymbol = (string) => {
-        let wordsArr = string.split(' ');
-        let firstSymbolArr = wordsArr.map(word => word[0].toUpperCase());
+        const wordsArr = string.split(' ');
+        const firstSymbolArr = wordsArr.map(word => word[0].toUpperCase());
         return wordsArr.map((word, i) => firstSymbolArr[i] + word.slice(1)).join(' ');
     }
 

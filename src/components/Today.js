@@ -5,11 +5,13 @@ const Today = (props) => {
 
     const {weatherDailyData} = useContext(WeatherDataContext);
 
+    const {tempType} = props
+
     let day = '';
     let temp = 0;
     let time = "";
     if (weatherDailyData.date) {
-        let date = new Date(weatherDailyData.date * 1000);
+        const date = new Date(weatherDailyData.date * 1000);
         day = new Date(weatherDailyData.date).toLocaleDateString(
             'en-US',
             { weekday: 'long' }
@@ -23,7 +25,7 @@ const Today = (props) => {
             <div className="today__image">
                 <img src={`/icons/${weatherDailyData.icon}.png`} alt=" "/>
             </div>
-            <div className="today__temp">{Math.round(temp)}<span>°{props.tempType}</span></div>
+            <div className="today__temp">{Math.round(temp)}<span>°{tempType}</span></div>
             <div className="today__name">{day}, <span>{time}</span></div>
         </div>
     );

@@ -2,19 +2,21 @@ import React from 'react';
 
 const HighlightsItem = (props) => {
 
-    let subtitle, value;
+    const {title, subtitle, value, unitMeasure} = props;
 
-    if (props.title === 'Wind Status') {
-        subtitle = (
+    let viewSubtitle, viewValue;
+
+    if (title === 'Wind Status') {
+        viewSubtitle = (
             <div className="subtitle">
-                <img src="/icons/wind-direction.png" alt="" className="wind-icon"></img>{props.subtitle}
+                <img src="/icons/wind-direction.png" alt="" className="wind-icon"></img>{subtitle}
             </div>);
     } else {
-        subtitle = <div className="subtitle">{props.subtitle}</div>
+        viewSubtitle = <div className="subtitle">{subtitle}</div>
     }
 
-    if ((props.title === 'Sunrise & Sunset') && (props.value)) {
-        value = props.value.map(item => {
+    if ((title === 'Sunrise & Sunset') && (value)) {
+        viewValue = value.map(item => {
             return (
                 <div className="suntime">
                     <div className="suntime__icon">
@@ -26,16 +28,16 @@ const HighlightsItem = (props) => {
                 </div>)
         })
     } else {
-        value = <div className="large-number">{props.value}
-            <span className="unit-measure">{props.unitMeasure}</span>
+        viewValue = <div className="large-number">{value}
+            <span className="unit-measure">{unitMeasure}</span>
         </div>
     }
 
     return (
         <div className="highlights__item">
-            <div className="highlights__item-title">{props.title}</div>
-            {value}
-            {subtitle}
+            <div className="highlights__item-title">{title}</div>
+            {viewValue}
+            {viewSubtitle}
         </div>
     );
 }

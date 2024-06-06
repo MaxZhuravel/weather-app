@@ -3,11 +3,14 @@ import Week from "./Week";
 import Highlights from "./Highlights";
 
 const Main = (props) => {
+
+    const {convert, tempType} = props
+
     return (
         <div className="main">
             <Week
-                convert={props.convert}
-                tempType={props.tempType}/>
+                convert={convert}
+                tempType={tempType}/>
             <Highlights/>
         </div>
     );
