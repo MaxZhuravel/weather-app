@@ -2,9 +2,7 @@ import React from 'react';
 import Week from "./Week";
 import Highlights from "./Highlights";
 
-const Main = (props) => {
-
-    const {convert, tempType} = props
+const Main = ({convert, tempType}) => {
 
     return (
         <div className="main">

@@ -5,9 +5,7 @@ import City from "./City";
 import Description from "./Description";
 import ErrorMessage from "./ErrorMessage";
 
-const Sidebar = (props) => {
-
-    const {error, tempType, changeCity, city} = props;
+const Sidebar = ({error, tempType, changeCity, city}) => {
 
     const content = error ? <ErrorMessage/> : <Today tempType={tempType}/>
 

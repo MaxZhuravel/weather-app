@@ -1,8 +1,6 @@
 import React from 'react';
 
-const HighlightsItem = (props) => {
-
-    const {title, subtitle, value, unitMeasure} = props;
+const HighlightsItem = ({title, subtitle, value, unitMeasure}) => {
 
     let viewSubtitle, viewValue;
 

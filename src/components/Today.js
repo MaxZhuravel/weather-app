@@ -1,11 +1,9 @@
 import React, {useContext} from 'react';
 import WeatherDataContext from "../context/WeatherDataContext";
 
-const Today = (props) => {
+const Today = ({tempType}) => {
 
     const {weatherDailyData} = useContext(WeatherDataContext);
-
-    const {tempType} = props
 
     let day = '';
     let temp = 0;

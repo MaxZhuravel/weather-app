@@ -1,8 +1,6 @@
 import React from 'react';
 
-const City = (props) => {
-
-    const { city } = props;
+const City = ({ city }) => {
 
     return (
         <div className="sidebar__city">

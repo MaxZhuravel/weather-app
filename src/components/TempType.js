@@ -1,8 +1,6 @@
 import React from 'react';
 
-const TempType = (props) => {
-
-    const {className, convert, type} = props
+const TempType = ({className, convert, type}) => {
 
     return (
         <div className={className} onClick={convert}>°{type}</div>

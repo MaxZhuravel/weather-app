@@ -3,9 +3,7 @@ import Day from "./Day";
 import TempType from "./TempType";
 import WeatherDataContext from "../context/WeatherDataContext";
 
-const Week = (props) => {
-
-    const {tempType, convert} = props;
+const Week = ({tempType, convert}) => {
 
     const {weatherWeekData} = useContext(WeatherDataContext);
 
