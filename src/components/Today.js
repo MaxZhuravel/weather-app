@@ -23,8 +23,10 @@ const Today = ({tempType}) => {
             <div className="today__image">
                 <img src={`/icons/${weatherDailyData.icon}.png`} alt=" "/>
             </div>
-            <div className="today__temp">{Math.round(temp)}<span>°{tempType}</span></div>
-            <div className="today__name">{day}, <span>{time}</span></div>
+            <div className="today__info">
+                <div className="today__temp">{Math.round(temp)}<span>°{tempType}</span></div>
+                <div className="today__name">{day}, <span>{time}</span></div>
+            </div>
         </div>
     );
 }
