@@ -57,6 +57,7 @@ class WeatherService {
         return {
             id: weatherData.id,
             city: weatherData.name,
+            country: weatherData.sys.country,
             date: weatherData.dt,
             description: this.bigFirstSymbol(weatherData.weather[0].description),
             icon: weatherData.weather[0].icon,

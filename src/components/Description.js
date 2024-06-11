@@ -5,6 +5,10 @@ const Description = () => {
 
     const {weatherDailyData} = useContext(WeatherDataContext);
 
+    const getRainPercent = () => {
+
+    }
+
     return (
         <div className="sidebar__info">
             <div className="sidebar__desc">
