@@ -13,8 +13,10 @@ const Sidebar = ({error, tempType, changeCity, city}) => {
         <div className="sidebar">
             <Search changeCity={changeCity}/>
             {content}
-            <Description/>
-            <City city={city}/>
+            <div className="sidebar__block">
+                <Description/>
+                <City city={city}/>
+            </div>
         </div>
     );
 

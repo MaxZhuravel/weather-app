@@ -1,0 +1,257 @@
+@media (max-width: 1200px) {
+    .App {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .highlights {
+        &__title {
+            font-size: 24px;
+        }
+        &__item {
+            padding: 20px;
+            height: 150px;
+        }
+        &__item-title {
+            font-size: 16px;
+        }
+    }
+
+    .week {
+        &__title {
+            font-size: 24px;
+        }
+        &__header {
+            margin-bottom: 20px;
+        }
+    }
+
+    .day {
+        &__img {
+            img {
+                width: 40px;
+            }
+        }
+    }
+
+    .large-number {
+        font-size: 32px;
+    }
+
+    .unit-measure {
+        font-size: 20px;
+    }
+
+    .search {
+        width: 75%;
+    }
+    .city__name {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 979px) {
+
+    .sidebar {
+        padding: 40px 20px
+    }
+
+    .main {
+        padding: 40px 20px;
+    }
+
+    .highlights {
+        &__title {
+            font-size: 22px;
+        }
+        &__item {
+            padding: 15px 10px;
+            height: 130px;
+        }
+        &__item-title {
+            font-size: 15px;
+        }
+    }
+
+    .week {
+        &__title {
+            font-size: 22px;
+        }
+        &__header {
+            margin-bottom: 18px;
+        }
+    }
+
+    .day {
+        &__body {
+            flex-direction: column;
+        }
+        &__img {
+            padding: 0;
+        }
+        &__temp {
+            font-size: 16px;
+            span {
+                font-size: 10px;
+            }
+        }
+    }
+
+    .suntime {
+        font-size: 16px;
+        &__icon {
+            width: 35px;
+            height: 35px;
+        }
+    }
+
+    .search {
+        font-size: 13px;
+        &__button {
+            padding: 15px;
+            background-size: 15px 15px;
+        }
+    }
+
+    .large-number {
+        font-size: 24px;
+    }
+
+    .unit-measure {
+        font-size: 14px
+    }
+
+    .subtitle {
+        font-size: 14px;
+    }
+
+}
+
+@media (max-width: 767px) {
+    .board {
+        flex-direction: column;
+    }
+    .sidebar {
+        width: 100%;
+        border-radius: 20px 20px 0 0;
+        padding: 40px;
+        &__block {
+            display: flex;
+        }
+        &__info {
+            width: 50%;
+        }
+        &__city {
+            width: 50%;
+        }
+    }
+    .main {
+        width: 100%;
+        border-radius: 0 0 20px 20px;
+        padding: 40px;
+    }
+    .week {
+        &__title {
+            font-size: 40px;
+        }
+        &__header {
+            margin-bottom: 28px;
+        }
+    }
+    .highlights {
+        &__item {
+            height: 150px;
+            padding: 17px;
+        }
+        &__title {
+            font-size: 40px;
+        }
+        &__body {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        &__item-title {
+            font-size: 17px;
+        }
+    }
+    .today {
+        display: flex;
+        margin-bottom: 10px;
+        &__info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    }
+    .large-number {
+        font-size: 36px;
+    }
+    .subtitle {
+        font-size: 20px;
+    }
+    .unit-measure {
+        font-size: 22px;
+    }
+    .suntime {
+        font-size: 20px
+    }
+    .search {
+        font-size: 26px;
+        &__button {
+            padding: 25px 25px;
+            background-size: 25px 25px;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar {
+        padding: 40px 20px;
+        &__block {
+            flex-direction: column;
+        }
+        &__info {
+            width: 100%;
+        }
+        &__city {
+            width: 100%;
+        }
+    }
+    .main {
+        padding: 40px 20px;
+    }
+    .today {
+        &__image {
+            img {
+                width: 80%;
+            }
+        }
+    }
+    .highlights {
+        &__title {
+            font-size: 30px;
+        }
+        &__body {
+            grid-template-columns: 1fr;
+        }
+        &__item {
+            align-items: center;
+        }
+    }
+
+    .week {
+        &__body {
+            flex-wrap: wrap;
+        }
+    }
+
+    .day {
+        width: 48%;
+        margin-bottom: 10px;
+    }
+
+    .city {
+        &__name {
+            font-size: 48px;
+        }
+    }
+}

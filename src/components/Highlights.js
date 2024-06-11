@@ -29,7 +29,7 @@ const Highlights = () => {
             'Wind Status': ' km/h',
             'Humidity': ' %',
             'Visibility': ' km',
-            'Clouds': '%',
+            'Clouds': ' %',
         }
         return units[item] ? units[item] : null;
     }

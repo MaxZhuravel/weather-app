@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
 @import "style/variables";
 
+
 * {
     box-sizing: border-box;
 }
@@ -13,7 +14,6 @@
 
 .board {
     border-radius: 50px;
-    min-height: 90vh;
     margin: 0 auto;
     display: flex;
     max-width: 1160px;
@@ -92,6 +92,7 @@
 }
 
 .today {
+    border-bottom: 1px solid lightgrey;
     &__image {
         margin-bottom: 20px;
         display: flex;
@@ -118,7 +119,7 @@
     &__name {
         font-size: 18px;
         padding-bottom: 30px;
-        border-bottom: 1px solid lightgrey;
+
 
         span {
             color: $second-color;
@@ -133,6 +134,9 @@
     width: 70%;
     overflow: hidden;
     padding: 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .week {
@@ -281,6 +285,7 @@
         border-radius: 25%;
         background: #D6D7DA url('./img/search.png') no-repeat center;
         background-size: 20px 20px;
+        cursor: pointer;
         &:active {
             transform: scale(0.95);
         }
@@ -345,3 +350,5 @@
         object-fit: contain;
     }
 }
+
+@import "style/adaptive";
