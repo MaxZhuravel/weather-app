@@ -5,18 +5,13 @@ const Today = ({tempType}) => {
 
     const {weatherDailyData} = useContext(WeatherDataContext);
 
-    let day = '';
-    let temp = 0;
-    let time = "";
-    if (weatherDailyData.date) {
-        const date = new Date(weatherDailyData.date * 1000);
-        day = new Date(weatherDailyData.date).toLocaleDateString(
-            'en-US',
-            { weekday: 'long' }
-        );
-        temp = weatherDailyData.temp
-        time = date.getHours() + ":" + date.getMinutes();
-    }
+    const date = new Date(weatherDailyData.date * 1000);
+    const day = new Date(weatherDailyData.date).toLocaleDateString(
+        'en-US',
+        { weekday: 'long' }
+    );
+    const temp = weatherDailyData.temp
+    const time = date.toTimeString().slice(0, 5);
 
     return (
         <div className="today">

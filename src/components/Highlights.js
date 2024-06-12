@@ -92,8 +92,8 @@ const Highlights = () => {
         if (title === 'Sunrise & Sunset') {
             const sunriseDate = new Date(source[0] * 1000);
             const sunsetDate = new Date(source[1] * 1000);
-            const sunriseTime = sunriseDate.getHours() + ':' + sunriseDate.getMinutes()
-            const sunsetTime = sunsetDate.getHours() + ':' + sunsetDate.getMinutes()
+            const sunriseTime = sunriseDate.toTimeString().slice(0, 5);
+            const sunsetTime = sunsetDate.toTimeString().slice(0, 5);
             return [
                 {imgSrc: '/icons/027-sunrise.png', time: sunriseTime},
                 {imgSrc: '/icons/026-sunset.png', time: sunsetTime}
