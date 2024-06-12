@@ -69,14 +69,9 @@ const Highlights = () => {
             'NNW',
         ];
 
-        // Split into the 8 directions
-        let degrees = (value * 8) / 360;
-
-        // round to nearest integer.
-        degrees = Math.round(degrees, 0);
-
-        // Ensure it's within 0-7
-        degrees = (degrees + 8) % 8;
+        let degrees = (value * 16) / 360;
+        degrees = Math.round(degrees);
+        degrees = (degrees + 16) % 16;
 
         return directions[degrees];
     };
