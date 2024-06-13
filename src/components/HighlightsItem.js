@@ -16,7 +16,7 @@ const HighlightsItem = ({title, subtitle, value, unitMeasure}) => {
     if ((title === 'Sunrise & Sunset') && (value)) {
         viewValue = value.map(item => {
             return (
-                <div className="suntime">
+                <div className="suntime" key={item.time}>
                     <div className="suntime__icon">
                         <img src={item.imgSrc} alt=""/>
                     </div>
