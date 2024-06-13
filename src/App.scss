@@ -351,4 +351,27 @@
     }
 }
 
+// LOADER
+.loader-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+.loader {
+    width: 100px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 8px solid;
+    border-color: #000 #0000;
+    animation: l1 1s infinite;
+}
+@keyframes l1 {to{transform: rotate(.5turn)}}
+
 @import "style/adaptive";
