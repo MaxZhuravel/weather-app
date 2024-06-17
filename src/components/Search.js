@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-const Search = ({changeCity}) => {;
+const Search = ({changeCity}) => {
 
     const [search, setSearch] = useState('');
 

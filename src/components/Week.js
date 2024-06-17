@@ -8,17 +8,15 @@ const Week = ({tempType, convert}) => {
     const {weatherWeekData} = useContext(WeatherDataContext);
 
     const renderDays = () => {
-       if (weatherWeekData.length) {
-           return weatherWeekData.map(({ day, min, max, icon }) => {
-               return <Day
-                        key={day}
-                        dayName={day}
-                        min={min}
-                        max={max}
-                        icon={icon}
-                        tempType={tempType} />;
-           });
-       }
+        return weatherWeekData.map(({ day, min, max, icon }) => {
+            return <Day
+                key={day}
+                dayName={day}
+                min={min}
+                max={max}
+                icon={icon}
+                tempType={tempType} />;
+        });
     };
 
     const days = renderDays();

@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import Sidebar from "./Sidebar";
 import Main from "./Main";
 import WeatherService from "../services/WeatherService";
 import WeatherDataContext from "../context/WeatherDataContext";
+import Loader from "./Loader";
 
 
 const Board = () => {
@@ -12,6 +13,7 @@ const Board = () => {
     const [tempType, setTempType] = useState('C');
     const [weatherDailyData, setWeatherDailyData] = useState({});
     const [weatherWeekData, setWeatherWeekData] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     const service = new WeatherService();
 
@@ -21,6 +23,7 @@ const Board = () => {
 
     const onRequest = async (city) => {
         try {
+            setLoading(true);
             const day = await service.getDailyWeatherData(city);
             const week = await service.getWeekWeatherData(city);
             setWeatherDailyData(day);
@@ -28,9 +31,11 @@ const Board = () => {
             tempType === 'F' && convertCelsiusToFahrenheit();
             setDisplayCity(city);
             setError(null);
+            setLoading(false);
         } catch (e) {
             console.log(e);
             setError(e);
+            setLoading(false)
         }
     };
 
@@ -45,7 +50,7 @@ const Board = () => {
     const convertCelsiusToFahrenheit = () => {
         setWeatherDailyData((prevState) => {
             const newTemp = getFahrenheit(prevState.temp);
-            return { ...prevState, temp: newTemp };
+            return {...prevState, temp: newTemp};
         });
         setWeatherWeekData((prevState) => {
             return prevState.map(item => {
@@ -57,7 +62,7 @@ const Board = () => {
     const convertFahrenheitToCelsius = () => {
         setWeatherDailyData((prevState) => {
             const newTemp = getCelsius(prevState.temp);
-            return { ...prevState, temp: newTemp };
+            return {...prevState, temp: newTemp};
         });
         setWeatherWeekData((prevState) => {
             return prevState.map(item => {
@@ -79,16 +84,19 @@ const Board = () => {
 
     return (
         <WeatherDataContext.Provider value={{weatherDailyData, weatherWeekData}}>
+            {loading && <Loader/>}
             <div className="board">
                 <Sidebar
                     changeCity={setRequestCity}
                     tempType={tempType}
                     city={displayCity}
-                    error={error} />
+                    error={error}/>
                 <Main
                     convert={convertTemp}
-                    tempType={tempType} />
+                    tempType={tempType}/>
             </div>
+
+
         </WeatherDataContext.Provider>
     );
 };
